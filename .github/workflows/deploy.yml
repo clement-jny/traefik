@@ -31,8 +31,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           SCRIPT_BEFORE: |
-            cd traefik
             pwd
           SCRIPT_AFTER: |
-            cd traefik
             pwd
