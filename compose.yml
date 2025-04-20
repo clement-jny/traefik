@@ -1,0 +1,16 @@
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v3.1
+    ports:
+      - 80:80 # Redirection du port 80 de l'hôte vers le port 80 du conteneur
+      - 443:443
+      - 8080:8080 # Redirection du port 8080 de l'hôte vers le port 8080 du conteneur (pour le tableau de bord Traefik)
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml:ro # Traefik config file
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Volume pour accéder au socket Docker
+      - traefik-ssl-certs:/ssl-certs # Volume pour certification ssl
+
+volumes:
+  traefik-ssl-certs:
+    driver: local
